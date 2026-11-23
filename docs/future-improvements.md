@@ -16,7 +16,7 @@ Enable **Template repository** under GitHub repository settings so new projects 
 
 ### Branch protection or rulesets
 
-Protect `main` after the required team workflow is known. Recommended starting rules include required pull requests, required CI checks, blocked force pushes, and at least one approval for team-owned repositories.
+Configured. `develop` is the integration branch; `develop` and `main` accept changes only through pull requests with at least one approval and the required check `Format, verify, and build`. Force pushes and branch deletion are blocked, and the rules apply to administrators.
 
 ### CodeQL default setup
 
