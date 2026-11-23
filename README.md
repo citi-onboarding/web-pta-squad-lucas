@@ -141,4 +141,4 @@ docker run --rm -p 3000:8080 vite-boilerplate
 
 ## Repository setup
 
-See [docs/future-improvements.md](docs/future-improvements.md) for intentionally deferred repository settings, such as CodeQL, dependency review, and CODEOWNERS, and for deferred product decisions.
+See [docs/future-improvements.md](docs/future-improvements.md) for intentionally deferred repository settings, such as CodeQL and dependency review, and for deferred product decisions.
