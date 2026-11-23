@@ -14,10 +14,6 @@ SSR, Server Components, server-side SEO, and Backend for Frontend behavior are o
 
 Enable **Template repository** under GitHub repository settings so new projects can start with **Use this template** and an independent Git history.
 
-### Branch protection or rulesets
-
-Configured. `develop` is the integration branch; `develop` and `main` accept changes only through pull requests with at least one approval and the required check `Format, verify, and build`. Force pushes and branch deletion are blocked, and the rules apply to administrators.
-
 ### CodeQL default setup
 
 Enable GitHub CodeQL default setup for JavaScript and TypeScript when the repository visibility and GitHub plan support it. Prefer the low-maintenance default setup before adding a custom workflow.
