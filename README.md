@@ -99,12 +99,7 @@ The core does not implement login, token storage, refresh, redirects, or toast n
 
 ## Branches
 
-Branch off `develop` and open the pull request against it. Name the branch after the task code, followed by a short kebab-case description:
-
-```text
-S<sprint>-<task>-<short-description>
-S1-03-cliente-erp
-```
+The integration branch is `develop`. See [CONTRIBUTING.md](CONTRIBUTING.md#branches-and-commits) for the branch naming convention.
 
 ## Agent skills
 
