@@ -1,26 +1,15 @@
-## Summary
+## What this change does
 
-Describe the problem and the chosen solution.
+<!-- Describe the behavior this pull request adds or changes and why. Link the task. -->
 
-## Test evidence
+## A risk I see
 
-- [ ] `pnpm verify`
-- [ ] Relevant integration or E2E tests
-- [ ] Manual verification, when applicable
+<!-- Name at least one risk: what could break, who is affected, and how to roll back. -->
 
-## Screenshots
+## How I used AI
 
-Add before/after screenshots for visual changes, or write "Not applicable".
+<!-- Required for level 3 and level 5 tasks. Otherwise write "Not applicable". -->
 
-## Risk and rollout
-
-Describe compatibility concerns, migrations, environment variables, or rollback steps.
-
-## Checklist
-
-- [ ] The change follows the app → features → shared dependency direction.
-- [ ] New API data is validated at runtime.
-- [ ] Query keys include every input that changes the response.
-- [ ] No secrets or private values are exposed through `VITE_*` variables.
-- [ ] User-facing states cover loading, errors, and empty data when relevant.
-- [ ] Documentation and `.env.example` are updated when required.
+- What I asked:
+- What I rejected:
+- How I verified it:
