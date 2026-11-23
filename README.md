@@ -23,6 +23,20 @@ A scalable foundation for React single-page applications that consume external A
 - pnpm 12 or later (enable it with `corepack enable`)
 - Docker for container validation
 
+## Run locally
+
+After cloning this repository, do not run `pnpm init:project`: it removes the example feature and is meant only for a repository freshly created from the template.
+
+Start the API first (`docker compose up` in the backend repository), then:
+
+```bash
+pnpm install --frozen-lockfile
+cp .env.example .env.local
+pnpm dev
+```
+
+The app runs on [http://localhost:5173](http://localhost:5173) and calls the API at `VITE_API_URL` (`http://localhost:3001` by default).
+
 ## Start a project
 
 After creating a repository from this template:
