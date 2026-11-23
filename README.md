@@ -141,6 +141,6 @@ docker run --rm -p 3000:8080 vite-boilerplate
 
 ## Repository setup
 
-Rename the GitHub repository to `vite-boilerplate` after converting or creating it. Then enable template-repository mode and configure branch rules, required CI checks, CodeQL, dependency review, and valid CODEOWNERS for the organization when owner names are known.
+The integration branch and its protection rules are described in [CONTRIBUTING.md](CONTRIBUTING.md#branches-and-commits).
 
-See [docs/future-improvements.md](docs/future-improvements.md) for intentionally deferred repository and product decisions.
+See [docs/future-improvements.md](docs/future-improvements.md) for intentionally deferred repository settings, such as CodeQL, dependency review, and CODEOWNERS, and for deferred product decisions.
