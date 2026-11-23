@@ -113,7 +113,7 @@ The core does not implement login, token storage, refresh, redirects, or toast n
 
 ## Branches
 
-The integration branch is `develop`. See [CONTRIBUTING.md](CONTRIBUTING.md#branches-and-commits) for the branch naming convention.
+The integration branch is `develop`. See [CONTRIBUTING.md](CONTRIBUTING.md#branches-and-commits) for the branch naming convention and the protection rules.
 
 ## Agent skills
 
@@ -140,7 +140,5 @@ docker run --rm -p 3000:8080 vite-boilerplate
 ```
 
 ## Repository setup
-
-The integration branch and its protection rules are described in [CONTRIBUTING.md](CONTRIBUTING.md#branches-and-commits).
 
 See [docs/future-improvements.md](docs/future-improvements.md) for intentionally deferred repository settings, such as CodeQL, dependency review, and CODEOWNERS, and for deferred product decisions.
