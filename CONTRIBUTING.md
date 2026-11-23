@@ -67,7 +67,14 @@ part of `pnpm verify`.
 
 ## Branches and commits
 
-Create a focused branch from `main`. Keep commits small enough to review and use an imperative commit subject that explains the outcome.
+The integration branch is `develop`. Create a focused branch from `develop` and open the pull request against `develop`. Name the branch after the task code, followed by a short kebab-case description:
+
+```text
+S<sprint>-<task>-<short-description>
+S1-03-cliente-erp
+```
+
+Keep commits small enough to review and use an imperative commit subject that explains the outcome.
 
 Do not mix formatting-only changes, dependency upgrades, and unrelated product behavior in the same pull request.
 
@@ -117,9 +124,10 @@ Record consequential, durable technical decisions in `docs/adr/` using the provi
 
 Complete the pull request template with:
 
-- A concise problem and solution summary
+- What the change does
+- A risk the author sees, including compatibility, migration, and rollback considerations
+- How AI was used, required for level 3 and level 5 tasks
 - Test evidence
 - Screenshots for visual changes
-- Compatibility, migration, and rollback considerations
 
 Keep generated files, lockfile changes, and documentation synchronized with the implementation. CI must pass before merge.

@@ -97,6 +97,10 @@ The core does not implement login, token storage, refresh, redirects, or toast n
 | `pnpm init:project --name "Name"` | Customize a repository created from this template                |
 | `pnpm skills:sync`                | Regenerate the Claude Code mirror of the CITi agent skills       |
 
+## Branches
+
+The integration branch is `develop`. See [CONTRIBUTING.md](CONTRIBUTING.md#branches-and-commits) for the branch naming convention.
+
 ## Agent skills
 
 The CITi workflow skills live in `.agents/skills/citi-*`, which is their only authored copy. Codex reads that directory directly. Claude Code discovers skills only under `.claude/skills/`, so the repository generates a mirror there.
