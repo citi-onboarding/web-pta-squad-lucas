@@ -36,10 +36,6 @@ Choose and add a license before encouraging public reuse. The maintainer must de
 
 Add bug-report and feature-request forms under `.github/ISSUE_TEMPLATE/` when the repository begins accepting public issues.
 
-### `CODEOWNERS`
-
-Add owners only after a valid GitHub user or team with write access is known. A placeholder would provide a false expectation of review enforcement.
-
 ## AI-assisted workflows
 
 ### GitHub Copilot instructions
