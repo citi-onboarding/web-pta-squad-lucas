@@ -76,7 +76,7 @@ S1-03-cliente-erp
 
 Work without a Docudata task, such as repository setup or tooling chores, uses `chore/<short-description>` instead, for example `chore/branch-protection-docs`.
 
-`develop` and `main` are protected: changes land only through pull requests with at least one approval and the required check `Format, verify, and build`. Force pushes and branch deletion are blocked, and the rules apply to administrators.
+`develop` and `main` are protected: changes land only through pull requests that pass the required check `Format, verify, and build` and are approved by a code owner listed in [`.github/CODEOWNERS`](.github/CODEOWNERS). Force pushes and branch deletion are blocked, and the rules apply to administrators.
 
 Keep commits small enough to review and use an imperative commit subject that explains the outcome.
 
