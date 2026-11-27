@@ -76,7 +76,7 @@ S1-03-cliente-erp
 
 Work without a Docudata task, such as repository setup or tooling chores, uses `chore/<short-description>` instead, for example `chore/branch-protection-docs`.
 
-`develop` and `main` are protected: changes land only through pull requests that pass the required check `Format, verify, and build` and are approved by a code owner listed in [`.github/CODEOWNERS`](.github/CODEOWNERS). Force pushes and branch deletion are blocked, and the rules apply to administrators.
+`develop` and `main` are protected: changes land only through pull requests that pass the required check `Format, verify, and build` and are approved by a code owner listed in [`.github/CODEOWNERS`](.github/CODEOWNERS). Force pushes and branch deletion are blocked. Repository administrators (the squad manager) may merge without a code-owner approval with `gh pr merge --admin`, and only after the required check passes.
 
 Keep commits small enough to review and use an imperative commit subject that explains the outcome.
 
