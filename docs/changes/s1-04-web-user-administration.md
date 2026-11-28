@@ -26,6 +26,7 @@ The administrator could not onboard anyone from the portal because "Usuários" w
 
 ## Resulting behavior
 
+- On a wide viewport every value stays aligned with its column header, with or without the "Gerar novo link" action.
 - ADMIN sees the subtitle and a table with Nome, E-mail, Papel, Vendedor no ERP and Último acesso, with "Carregando usuários…", a failure message with its reason and "Tentar novamente".
 - Last access reads `dd/mm/aaaa hh:mm`, "Nunca acessou", "Convite pendente até …" or "Convite vencido"; non-sellers show "—" as ERP seller.
 - "+ Cadastrar usuário" opens a dialog; the ERP seller field is enabled and required only for "Vendedor", offers only the available names and, when none is available, shows the waiting message and disables "Cadastrar". Email and ERP seller conflicts show next to their field; other failures show the reason and keep the typed data.
@@ -59,7 +60,7 @@ The administrator could not onboard anyone from the portal because "Usuários" w
 - `./node_modules/.bin/vitest run` → `Test Files 27 passed (27)`, `Tests 198 passed (198)`.
 - `./node_modules/.bin/vitest run --coverage` → `All files | 98.06 | 94.15 | 98.27 | 98.02`, no threshold error.
 - `./node_modules/.bin/tsc --noEmit && ./node_modules/.bin/vite build` → built, exit 0.
-- `./node_modules/.bin/playwright test` (build served by a manual `vite preview`) → `29 passed`.
+- `./node_modules/.bin/playwright test` (build served by a manual `vite preview`) → `30 passed`, after the table alignment fix; `format:check`, `verify`, `test:coverage` and `build` were rerun after it, with the same test counts and coverage as above.
 - `node scripts/check-agent-skills.mjs` → exit 0.
 - `./node_modules/.bin/openspec validate --all --strict --no-interactive` → `Totals: 2 passed, 0 failed (2 items)`.
 - Real backend (local, unversioned script), repeated **after the review fixes** on alternative ports (API 3101, web 5273): throwaway PostgreSQL, the backend `s1-04-user-administration` working tree and the web production build → 10 PASS, 0 FAIL, 25 API requests: listing the 8 seeded users, registering a manager and a seller, the real `409` with `conflictField`, lookup and acceptance, sign-in to "Painel do comercial", the real `404` for a reused link, a new link invalidating the old one, and the final list states. The specific review-fix cases (ended session, cancel while pending, names failure, new link in the same tab, another open session) are covered only by simulated HTTP.

@@ -26,6 +26,12 @@ While the list loads, the page SHALL show "Carregando usuários…". A failure S
 - **WHEN** listing users fails and the administrator chooses "Tentar novamente" after the server recovers
 - **THEN** the failure message and its reason are shown, and after the retry the table is shown
 
+#### Scenario: Wide viewport keeps the columns aligned
+
+- **GIVEN** the server returns users with and without the "Gerar novo link" action
+- **WHEN** the page is shown at 1280 px wide
+- **THEN** in every row each of the five values starts at the same horizontal position as its column header
+
 #### Scenario: Narrow viewport
 
 - **WHEN** the page is shown at 390 px wide

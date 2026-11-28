@@ -27,7 +27,7 @@ const columns = [
   "Último acesso",
 ] as const;
 const rowClassName =
-  "flex flex-col gap-1 border-b border-zinc-300 py-3 dark:border-zinc-700 md:grid md:grid-cols-[repeat(5,minmax(0,1fr))_auto] md:items-center md:gap-3";
+  "flex flex-col gap-1 border-b border-zinc-300 py-3 dark:border-zinc-700 md:grid md:grid-cols-[repeat(5,minmax(0,1fr))_9rem] md:items-center md:gap-3";
 const cellClassName = "[overflow-wrap:anywhere]";
 
 function lastAccess(user: AdminUser) {
@@ -110,7 +110,7 @@ export function UsersPage({ apiClient, onUnauthorized }: UsersPageProps) {
         >
           <div role="rowgroup">
             <div
-              className="sr-only md:not-sr-only md:grid md:grid-cols-[repeat(5,minmax(0,1fr))_auto] md:gap-3 md:border-b md:border-zinc-500 md:pb-2 md:font-semibold"
+              className="sr-only md:not-sr-only md:grid md:grid-cols-[repeat(5,minmax(0,1fr))_9rem] md:gap-3 md:border-b md:border-zinc-500 md:pb-2 md:font-semibold"
               role="row"
             >
               {columns.map((column) => (

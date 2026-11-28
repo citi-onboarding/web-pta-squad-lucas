@@ -111,3 +111,33 @@ for (const colorScheme of ["light", "dark"] as const) {
     });
   });
 }
+
+test.describe("wide viewport", () => {
+  test.use({ viewport: { width: 1280, height: 720 } });
+
+  test("keeps every value aligned with its column header", async ({ page }) => {
+    await mockApi(page);
+    await page.goto("/usuarios");
+
+    const table = page.getByRole("table", { name: "Lista de usuários" });
+
+    await expect(table.getByRole("row", { name: /Dora Alves/ })).toBeVisible();
+
+    const leftEdges = (elements: Element[]) =>
+      elements.map((element) =>
+        Math.round(element.getBoundingClientRect().left),
+      );
+    const headers = await table
+      .getByRole("columnheader")
+      .evaluateAll(leftEdges);
+
+    for (const { name } of users) {
+      const cells = await table
+        .getByRole("row", { name: new RegExp(name) })
+        .getByRole("cell")
+        .evaluateAll(leftEdges);
+
+      expect(cells, name).toEqual(headers);
+    }
+  });
+});

@@ -78,6 +78,16 @@
 - [x] 5.3 Refactor or dispensation.
   - Dispensed by João on 2026-11-28: the only candidate (useCallback to drop two eslint-disable) has a small gain.
 
+## 6. Cycle 4 — Table alignment (found on a 1280 px screenshot on 2026-11-28)
+
+- [x] 6.1 Red: test for "Wide viewport keeps the columns aligned" (Playwright, 1280 px).
+  - João accepted the new scenario and this Red. Production code is unchanged.
+  - Red: `./node_modules/.bin/playwright test e2e/user-administration.spec.ts` (build served by a manual `vite preview` on port 4273) → `1 failed`, `2 passed`; the failure is the assertion for the first row with "Gerar novo link": header left edges `144, 342, 541, 739, 938`, cell left edges `144, 318, 492, 667, 841`.
+- [x] 6.2 Green: give the action column the same width in the header and in every row; rerun the gates of 4.1 and 4.2.
+  - Green: the sixth grid track changed from `auto` to `9rem` in the header and in the rows; no test changed. As `npx -y pnpm@12.5.1 run <script>`: `format:check`, `verify` (`Tests 198 passed (198)`, `Totals: 2 passed, 0 failed (2 items)`), `test:coverage` and `build` → exit 0. Playwright against a manual `vite preview` on port 4273 → `30 passed`. A new 1280 px screenshot shows the columns aligned. The real-backend check was not repeated: only two layout classes changed.
+- [x] 6.3 Refactor or dispensation.
+  - Dispensed by João on 2026-11-28: the only candidate was a shared constant for the grid classes, and the new test already catches the header and the rows diverging.
+
 ## 4. Consolidation
 
 - [x] 4.1 Run `pnpm format:check`, `pnpm verify`, `pnpm test:coverage`, `pnpm build` and `pnpm test:e2e`. Use `./node_modules/.bin/` if `pnpm` is unavailable, and record which command ran.
