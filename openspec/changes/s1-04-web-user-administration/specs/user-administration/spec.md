@@ -32,6 +32,11 @@ While the list loads, the page SHALL show "Carregando usuários…". A failure S
 - **WHEN** the page is shown at 1280 px wide
 - **THEN** in every row each of the five values starts at the same horizontal position as its column header
 
+#### Scenario: Dialogs fit a narrow viewport
+
+- **WHEN** the registration dialog, the invitation link dialog or the new link confirmation is open at 390 px wide
+- **THEN** the dialog and its content fit without horizontal scrolling and pass the automated accessibility check
+
 #### Scenario: Narrow viewport
 
 - **WHEN** the page is shown at 390 px wide

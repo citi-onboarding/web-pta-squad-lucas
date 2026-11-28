@@ -60,7 +60,7 @@ The administrator could not onboard anyone from the portal because "Usuários" w
 - `./node_modules/.bin/vitest run` → `Test Files 27 passed (27)`, `Tests 198 passed (198)`.
 - `./node_modules/.bin/vitest run --coverage` → `All files | 98.06 | 94.15 | 98.27 | 98.02`, no threshold error.
 - `./node_modules/.bin/tsc --noEmit && ./node_modules/.bin/vite build` → built, exit 0.
-- `./node_modules/.bin/playwright test` (build served by a manual `vite preview`) → `30 passed`, after the table alignment fix; `format:check`, `verify`, `test:coverage` and `build` were rerun after it, with the same test counts and coverage as above.
+- `./node_modules/.bin/playwright test` (build served by a manual `vite preview`) → `32 passed`, after the table alignment fix and the dialog coverage; `format:check`, `verify`, `test:coverage` and `build` were rerun after it, with the same test counts and coverage as above.
 - `node scripts/check-agent-skills.mjs` → exit 0.
 - `./node_modules/.bin/openspec validate --all --strict --no-interactive` → `Totals: 2 passed, 0 failed (2 items)`.
 - Real backend (local, unversioned script), repeated **after the review fixes** on alternative ports (API 3101, web 5273): throwaway PostgreSQL, the backend `s1-04-user-administration` working tree and the web production build → 10 PASS, 0 FAIL, 25 API requests: listing the 8 seeded users, registering a manager and a seller, the real `409` with `conflictField`, lookup and acceptance, sign-in to "Painel do comercial", the real `404` for a reused link, a new link invalidating the old one, and the final list states. The specific review-fix cases (ended session, cancel while pending, names failure, new link in the same tab, another open session) are covered only by simulated HTTP.
@@ -83,7 +83,7 @@ Sign in as ADMIN, open "Usuários" and choose "+ Cadastrar usuário". Copy the l
 
 ## Implementation notes
 
-- The native `<dialog>` falls back to the `open` attribute when `showModal` is missing (jsdom), so the unit tests do not exercise the modal behavior; Playwright covers Escape on the pending dialogs, but no accessibility or 390 px check runs with a dialog open.
+- The native `<dialog>` falls back to the `open` attribute when `showModal` is missing (jsdom), so the unit tests do not exercise the modal behavior; Playwright covers Escape on the pending dialogs, and the 390 px and accessibility checks of the filled registration, invitation link and new link dialogs. The ERP seller conflict and names failure states were checked at 390 px only by a one-off, unversioned script.
 - Preventing only the dialog `cancel` event lets Chromium close it on a repeated Escape, so the Escape `keydown` is blocked too while a submission is pending.
 - A new link brought by an in-app router navigation, without a `hashchange` event, has no automated test.
 - A failure while ending another session is lost on reload; the password has already been created at that point.

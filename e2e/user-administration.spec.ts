@@ -71,6 +71,109 @@ async function mockApi(page: Page) {
   });
 }
 
+async function expectDialogToFit(page: Page) {
+  const dialog = page.getByRole("dialog");
+
+  await expect(dialog).toBeVisible();
+
+  const overflow = await dialog.evaluate((element) => {
+    const { left, right } = element.getBoundingClientRect();
+
+    return {
+      page:
+        document.documentElement.scrollWidth -
+        document.documentElement.clientWidth,
+      dialog: element.scrollWidth - element.clientWidth,
+      outsideViewport: left < 0 || right > document.documentElement.clientWidth,
+    };
+  });
+
+  expect(overflow).toEqual({ page: 0, dialog: 0, outsideViewport: false });
+
+  const { violations } = await new AxeBuilder({ page })
+    .withTags(["wcag2a", "wcag2aa", "wcag21a", "wcag21aa"])
+    .analyze();
+
+  expect(violations).toEqual([]);
+}
+
+// Registered after mockApi, so it takes precedence for these requests only.
+async function mockDialogApi(page: Page) {
+  const invitation = {
+    token: "T0kenAbcdefghijklmnopqrstuvwxyz0123456789_-AB",
+    expiresAt: "2026-11-30T18:00:00Z",
+  };
+
+  await page.route(
+    /\/api\/v1\/users(\/erp-seller-names|\/[^/]+\/invitations)?$/,
+    async (route) => {
+      const request = route.request();
+      const headers = {
+        "access-control-allow-origin": new URL(page.url()).origin,
+        "access-control-allow-credentials": "true",
+        "access-control-allow-headers": "content-type",
+        "access-control-allow-methods": "GET, POST, OPTIONS",
+      };
+
+      if (request.method() === "OPTIONS") {
+        await route.fulfill({ status: 204, headers });
+      } else if (request.url().endsWith("/erp-seller-names")) {
+        await route.fulfill({
+          status: 200,
+          headers,
+          json: ["ANA SOUZA DE ALBUQUERQUE CAVALCANTI DOS SANTOS FILHO"],
+        });
+      } else if (request.url().endsWith("/invitations")) {
+        await route.fulfill({ status: 201, headers, json: invitation });
+      } else if (request.method() === "POST") {
+        await route.fulfill({
+          status: 201,
+          headers,
+          json: { user: users[1], invitation },
+        });
+      } else {
+        await route.fulfill({ status: 200, headers, json: users });
+      }
+    },
+  );
+}
+
+for (const colorScheme of ["light", "dark"] as const) {
+  test.describe(`${colorScheme} dialogs`, () => {
+    test.use({ colorScheme });
+
+    test("registration, link and new link dialogs fit and are accessible", async ({
+      page,
+    }) => {
+      await mockApi(page);
+      await mockDialogApi(page);
+      await page.goto("/usuarios");
+
+      await page.getByRole("button", { name: "+ Cadastrar usuário" }).click();
+      await page.getByLabel("Nome").fill(users[0]!.name);
+      await page.getByLabel("E-mail").fill(users[0]!.email);
+      await page.getByLabel("Papel").selectOption({ label: "Vendedor" });
+      await page.getByLabel(/Vendedor no ERP/).selectOption({ index: 1 });
+      await expectDialogToFit(page);
+
+      await page
+        .getByRole("button", { name: "Cadastrar", exact: true })
+        .click();
+      await expect(
+        page.getByRole("button", { name: "Copiar link" }),
+      ).toBeVisible();
+      await expectDialogToFit(page);
+
+      await page.getByRole("button", { name: "Fechar" }).click();
+      await page
+        .getByRole("button", { name: "Gerar novo link" })
+        .first()
+        .click();
+      await expectDialogToFit(page);
+    });
+  });
+}
+
 for (const colorScheme of ["light", "dark"] as const) {
   test.describe(`${colorScheme} color scheme`, () => {
     test.use({ colorScheme });

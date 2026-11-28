@@ -88,6 +88,12 @@
 - [x] 6.3 Refactor or dispensation.
   - Dispensed by João on 2026-11-28: the only candidate was a shared constant for the grid classes, and the new test already catches the header and the rows diverging.
 
+## 7. Dialogs at 390 px (acceptance item, 2026-11-28)
+
+- [x] 7.1 Regression coverage for "Dialogs fit a narrow viewport" (Playwright + axe, light and dark), accepted by João. No production code changed.
+  - The behavior already existed, so this is not Red: `./node_modules/.bin/playwright test` against a manual `vite preview` on port 4273 → `32 passed` on the first run, including the two new tests.
+  - A one-off script, not versioned, also checked these states at 390 px, in light and dark and on a 500 px tall screen: ERP seller conflict and names loading failure. No horizontal overflow and no axe violation; on the short screen the dialog scrolls vertically.
+
 ## 4. Consolidation
 
 - [x] 4.1 Run `pnpm format:check`, `pnpm verify`, `pnpm test:coverage`, `pnpm build` and `pnpm test:e2e`. Use `./node_modules/.bin/` if `pnpm` is unavailable, and record which command ran.
