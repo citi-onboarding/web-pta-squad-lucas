@@ -5,7 +5,7 @@ A scalable foundation for React single-page applications that consume external A
 ## Included
 
 - React 19 and Vite
-- React Router with home, route error, and not-found states
+- React Router with sign-in, invitation, role-protected pages, route error, and not-found states
 - TanStack Query with conservative shared defaults
 - TypeScript strict mode
 - Tailwind CSS 4 through the official Vite plugin
