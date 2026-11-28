@@ -28,8 +28,10 @@ to date as the change evolves.
 
 ## Index
 
-| Change ID | Title | Status | Related ADRs |
-| --------- | ----- | ------ | ------------ |
+| Change ID                                                         | Title                                       | Status      | Related ADRs |
+| ----------------------------------------------------------------- | ------------------------------------------- | ----------- | ------------ |
+| [s1-04-web-user-administration](s1-04-web-user-administration.md) | Web user administration and invitation page | in-progress | ADR-0002     |
+| [s1-04-web-authentication](s1-04-web-authentication.md)           | Web sign-in, role access and sign-out       | in-progress | ADR-0001     |
 
 <!--
 Add one row per change doc.

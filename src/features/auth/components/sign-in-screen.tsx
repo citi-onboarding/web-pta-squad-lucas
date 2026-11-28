@@ -4,19 +4,24 @@ import type { ComponentProps } from "react";
 import type { ApiClient } from "@/shared/lib/api/create-client";
 import { ApiError } from "@/shared/lib/api/errors";
 
-import { getFailureReason } from "../lib/get-failure-reason";
+import { getFailureReason } from "@/shared/lib/get-failure-reason";
 import { signInMutationOptions } from "../queries/sign-in-mutation";
 import type { User } from "../types/user";
 
 type SignInScreenProps = {
   apiClient: ApiClient;
+  createdEmail?: string | null;
   onSignedIn: (user: User) => void;
 };
 
 const inputClassName =
   "mt-1 block w-full rounded-md border border-zinc-500 bg-transparent px-3 py-2";
 
-export function SignInScreen({ apiClient, onSignedIn }: SignInScreenProps) {
+export function SignInScreen({
+  apiClient,
+  createdEmail,
+  onSignedIn,
+}: SignInScreenProps) {
   const { mutate, error, isPending } = useMutation(
     signInMutationOptions(apiClient),
   );
@@ -54,10 +59,16 @@ export function SignInScreen({ apiClient, onSignedIn }: SignInScreenProps) {
         <p className="mt-2 text-center text-sm">
           Use o e-mail e a senha da DistriLux.
         </p>
+        {createdEmail ? (
+          <p className="mt-4 text-center text-sm" role="status">
+            Senha criada. Entre com seu e-mail e senha.
+          </p>
+        ) : null}
         <label className="mt-6 block text-sm font-medium">
           E-mail
           <input
             autoComplete="username"
+            defaultValue={createdEmail ?? ""}
             className={inputClassName}
             name="email"
             required

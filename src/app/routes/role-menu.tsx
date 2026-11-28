@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-import { getFailureReason } from "@/features/auth/lib/get-failure-reason";
+import { getFailureReason } from "@/shared/lib/get-failure-reason";
 import type { User } from "@/features/auth/types/user";
 
 import { rolePages } from "../role-access";

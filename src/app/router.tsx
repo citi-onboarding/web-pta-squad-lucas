@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import type { RouteObject } from "react-router-dom";
 
 import { pagePaths } from "./role-access";
+import { CreatePasswordRoute } from "./routes/create-password-route";
 import { NotFoundPage } from "./routes/not-found-page";
 import { RequireIdentity } from "./routes/require-identity";
 import { RootRoute } from "./routes/root-route";
@@ -18,6 +19,11 @@ export const routes: RouteObject[] = [
   {
     path: "/entrar",
     element: <SignInRoute />,
+    errorElement: <RouteErrorPage />,
+  },
+  {
+    path: "/criar-senha",
+    element: <CreatePasswordRoute />,
     errorElement: <RouteErrorPage />,
   },
   ...pagePaths.map((path) => ({

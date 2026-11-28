@@ -1,4 +1,4 @@
-import { getFailureReason } from "@/features/auth/lib/get-failure-reason";
+import { getFailureReason } from "@/shared/lib/get-failure-reason";
 
 type IdentityFailureProps = {
   error: Error;

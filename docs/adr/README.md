@@ -21,8 +21,10 @@ Skip it for routine implementation details, formatting choices, or a local and r
 
 ## Index
 
-| Number | Title | Status | Superseded by |
-| ------ | ----- | ------ | ------------- |
+| Number                                                    | Title                                                                   | Status   | Superseded by |
+| --------------------------------------------------------- | ----------------------------------------------------------------------- | -------- | ------------- |
+| [0002](0002-invitation-link-token-handling.md)            | Invitation link token in the URL fragment, never kept by the browser    | Proposed | —             |
+| [0001](0001-web-session-identity-and-route-protection.md) | Session identity as server state and route protection composed in `app` | Proposed | —             |
 
 <!--
 Add one row per ADR, newest first.
